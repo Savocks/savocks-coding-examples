@@ -1,5 +1,6 @@
 import './components/weather-card/weather-card';
 import './components/header/header';
+import './components/weather-icon/weather-icon';
 import {
   coordinates,
   CoordinatesInitEvent,
@@ -8,6 +9,7 @@ import {
 } from './utils/geolocalization';
 import {getCityWeather, initWeatherApi, italyTopCitiesWeather, TopCitiesEventKey} from './api/weather';
 import '../public/styles.css';
+import '../public/weather-icons.css';
 
 
 let root = null;
@@ -48,11 +50,11 @@ const createTopCitiesWeatherCards = () => {
      ></weather-card>`).join('');
 }
 
-const coordinatesEventPromise = new Promise((resolve, reject) => {
+const coordinatesEventPromise = new Promise((resolve) => {
   document.addEventListener(CoordinatesInitEvent, () => resolve(CoordinatesInitEvent));
 });
 
-const topCitiesEventPromise = new Promise((resolve, reject) => {
+const topCitiesEventPromise = new Promise((resolve) => {
   document.addEventListener(TopCitiesEventKey, () => resolve(TopCitiesEventKey));
 })
 
