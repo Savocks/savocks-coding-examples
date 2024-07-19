@@ -8,6 +8,7 @@ import {
 } from './utils/geolocalization';
 import {getCityWeather, initWeatherApi, italyTopCitiesWeather, TopCitiesEventKey} from './api/weather';
 import '../public/styles.css';
+import '../public/weather-icons.css';
 
 
 let root = null;
