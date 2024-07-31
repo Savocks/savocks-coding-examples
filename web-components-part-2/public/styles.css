@@ -260,13 +260,8 @@ textarea {
   }
 }
 
-.weather-cards-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3em;
-}
-
 .container {
+  position: relative;
   max-width: 976px;
   padding: .5em;
   margin: 0 auto;
