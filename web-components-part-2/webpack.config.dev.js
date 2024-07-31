@@ -3,7 +3,7 @@ const common = require('./webpack.common.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
-
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 module.exports = merge(common, {
   mode: 'development',
@@ -34,13 +34,25 @@ module.exports = merge(common, {
         use: ['raw-loader'],
         // Only apply this rule to CSS files in 'components' directory
         include: path.resolve(__dirname, 'src/components'),
-      }
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,  // if the file is greater than 10kb, file-loader will be used
+            }
+          }
+        ]
+      },
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'public/index.html',
     }),
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin(),
+    new SpriteLoaderPlugin(),
   ]
 });

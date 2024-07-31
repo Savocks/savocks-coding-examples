@@ -1,4 +1,5 @@
 import {getIcon} from './utils/icon-mapper';
+import icons from './vendor/remixicon.symbol.svg';
 
 export class WeatherIcon extends HTMLElement {
   constructor() {
@@ -27,7 +28,7 @@ export class WeatherIcon extends HTMLElement {
     const icon = getIcon(weatherCode);
     this.shadowRoot.innerHTML = `
       <svg class="icon">
-        <use xlink:href="src/components/weather-icon/vendor/remixicon.symbol.svg#${icon}"></use>
+        <use xlink:href="${icons}#${icon}"></use>
       </svg>
     `;
   }
